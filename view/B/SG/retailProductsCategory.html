@@ -15,8 +15,11 @@
                     return response.json();
                 }).then(function (data) {
                     var htmlTxt = '';
-                
-                        var product = data[0];
+                    
+                    //Added for loop (Yan Bin)
+                    for (i = 0; i < data.length; i++) {
+
+                        var product = data[i];
                         //generate html for retail products
                         htmlTxt += '\
                             <li class="col-md-3 col-sm-6 col-xs-12 product" style="padding-bottom: 1%; padding-top: 2%;">\
@@ -37,11 +40,21 @@
                                         <form action="retailProductDetails.html">\
                                             <input type="hidden" name="sku" value="' + product.sku + '"/>\
                                             <input type="submit" class="btn btn-primary btn-block" value="More Details"/>\
-                                        </form>\
-                                    </span>\
-                                </span>\
-                            </li>';
-                
+                                        </form>';
+
+                        //Added check for logged in user and display add to cart button if logged it (Yan Bin)
+                        //check if user is logged in
+                        var memberEmail = sessionStorage.getItem('memberEmail');
+                        //display 'Add To Cart' button only if user is logged in
+                        if(memberEmail != null && memberEmail != '') {
+                            htmlTxt += '<button class="btn btn-primary btn-block" onclick="addToCart(\'' + product.sku +
+                                '\',\'' + product.id + '\',' + product.price + ',\'' + product.name + '\',\'' + product.imageURL +
+                                '\')">Add To Cart</button>';
+                        }
+                        htmlTxt += '</span></span></li>';
+
+                    }
+
                     document.getElementById("retailProductsDisplay").innerHTML = htmlTxt;
                     document.getElementById("categoryTitle").innerHTML = cat;
                 }).catch(function(error) {
