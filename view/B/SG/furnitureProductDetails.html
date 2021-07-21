@@ -21,14 +21,14 @@
                     //set furniture details
                     document.getElementById("imgFurniture").setAttribute('src', furniture.imageURL);
 
-                    //add name, price, description, height, length and width
-                    document.getElementById("furnitureName").setAttribute('src', furniture.name);
-                    document.getElementById("price").setAttribute('src', '$' + furniture.price);
-                    document.getElementById("description").setAttribute('src', furniture.description);
-                    document.getElementById("furnitureInfo").setAttribute('src', furniture.height);
-                    document.getElementById("furnitureInfo").setAttribute('src', furniture.length);
-                    document.getElementById("furnitureInfo").setAttribute('src', furniture.width);
-                
+                    //Added name, price, description, height, length and width (Jia Shun)
+                    document.getElementById("furnitureName").innerHTML = furniture.name;
+                    document.getElementById("price").innerHTML= '$' + furniture.price;
+                    document.getElementById("description").innerHTML = furniture.description;
+                    document.getElementById("furnitureInfo").innerHTML = "Height: " + furniture.height + "<br>";
+                    document.getElementById("furnitureInfo").innerHTML += "Length: " + furniture.length + "<br>";
+                    document.getElementById("furnitureInfo").innerHTML += "Width: " + furniture.width + "<br>";
+
                     if(memberEmail != null && memberEmail != '') {
                         document.getElementById("addToCartBtn").innerHTML = '<button class="btn btn-primary" onclick="addToCart(\''
                         + furniture.sku + '\',\'' + furniture.id + '\',' + furniture.price + ',\'' + furniture.name + '\',\''
@@ -187,7 +187,7 @@
                                     <div id="addToCartBtn"></div>
                                     <p class="price"><h4 class="amount" id="price"></h4></p>
                                     <strong>Description</strong>
-                                    <p class="taller" id="description"></p>
+                                    <p class="taller" id="description"> </p>
                                     <p id="furnitureInfo"></p>
                                     <div class="product_meta">
                                         <span class="posted_in">Category: <a id="categoryLink" rel="tag"></a></span>
