@@ -21,9 +21,9 @@
                     //set furniture details
                     document.getElementById("imgFurniture").setAttribute('src', furniture.imageURL);
 
-                    //Added name, price, description, height, length and width (Jia Shun)
+                    //Added furniture name, price, description, height, length and width (Jia Shun)
                     document.getElementById("furnitureName").innerHTML = furniture.name;
-                    document.getElementById("price").innerHTML= '$' + furniture.price;
+                    document.getElementById("price").innerHTML= '$' + furniture.price + '.00';
                     document.getElementById("description").innerHTML = furniture.description;
                     document.getElementById("furnitureInfo").innerHTML = "Height: " + furniture.height + "<br>";
                     document.getElementById("furnitureInfo").innerHTML += "Length: " + furniture.length + "<br>";
